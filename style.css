@@ -1,0 +1,9 @@
+li {
+    width: 600px ;
+    text-align: center;
+}
+
+.ulHead {
+    background-color: black !important;
+    color: white !important;
+}
