@@ -24,7 +24,7 @@ fetch('http://fbrc.esy.es/DWWM22053/Api/api.php/users')
 function creerListe(nom, prenom, mail) {
     // Création de l'élément ul avec la classe boostrap
     var ul = document.createElement("ul");
-    ul.classList.add("list-group", "list-group-horizontal");
+    ul.classList.add("list-group", "list-group-horizontal", "col-8");
 
     // Création de trois éléments li avec les classes boostrap
     for (let i = 0; i < 3; i++) {
