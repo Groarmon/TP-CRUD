@@ -10,25 +10,15 @@ document.getElementById('form').addEventListener('submit',function(event) {
     const zoneErreur = document.getElementById('zoneErreur');
 
     let regExp =  /\d/ ;
-    let regExpMail =  /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    let msg = "Certains champs sont mal saisi !";
 
     if(regExp.test(nom) || (regExp.test(prenom))){ 
-        console.log("nom ou prenom faux");
-        zoneErreur.innerText = msg;
+        zoneErreur.innerText = "Ne doit pas comporter de numéros !";
     };
 
-    if(!nom || !prenom | !email){
-        console.log("manque valeurs");
-        zoneErreur.innerText =  msg;
-    };
+    // if(!nom || !prenom){
+    //     zoneErreur.innerText =  msg;
+    // };
     
-    if(regExpMail.test(!email)){
-        console.log("mauvais format email");
-        zoneErreur.innerText = msg;
-
-    };
-
     const users = {
         id: id,
         nom: nom,
