@@ -1,15 +1,19 @@
+
 let liste = document.getElementById('read');
+
 // Récupération JSON de l'API
 fetch('http://fbrc.esy.es/DWWM22053/Api/api.php/users')
     .then((reponse) => {
         return reponse.json();
     })
     .then((donneeUser) => {
+
         let valId =  donneeUser.users.records;
+
         const valNom = donneeUser.users.records.map(index => index[1]);
         const valPrenom = donneeUser.users.records.map(index => index[2]);
         const valMail = donneeUser.users.records.map(index => index[3]);
-
+   
         var nbrUser = donneeUser.users.records.length;
         console.log(valId)
 
@@ -19,8 +23,7 @@ fetch('http://fbrc.esy.es/DWWM22053/Api/api.php/users')
             var li = document.createElement("li");
             li.classList.add("list-group-item");
             indice ++;
-        }
-        
+        }       
     });
     
     function creerListe(id, nom, prenom, mail) {
@@ -50,6 +53,7 @@ fetch('http://fbrc.esy.es/DWWM22053/Api/api.php/users')
 
             // Ajout de l'élément li à l'élément ul
             ul.appendChild(li);
+
         }
 
         // Ajout de l'élément ul au corps du document

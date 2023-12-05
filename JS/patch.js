@@ -7,6 +7,7 @@ document.getElementById('formUpdate').addEventListener('submit', function(event)
     const emailUpdate = document.getElementById('emailUpdate').value;
 
     const usersUpdate = {
+
         nom: nomUpdate,
         prenom: prenomUpdate,
         email: emailUpdate,
