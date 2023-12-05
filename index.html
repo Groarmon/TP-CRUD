@@ -33,26 +33,29 @@
   
     <div class="main row justify-content-center" id="formCreate">
         <!--Formulaire d'ajout-->
-        <form action="get" id="form" class="row justify-content-center mb-4 w-75">
+        <form action="get" id="form" class="row justify-content-center mb-4 ">
 
             <div class="col-10 mb-3">
                 <div class="form-Id">
                     <label for="id">id</label>
-                    <input type="text" class="form-control" id="id" placeholder="Identifiant">
+                    <input type="text" class="form-control" id="id" placeholder="Identifiant" required="required">
+                    <span id="zoneErreurId" class="zoneErreurAll"></span>
                 </div>
             </div>
 
             <div class="col-10 mb-3">
                 <div class="form-nom" >
                     <label for="nom">nom</label>
-                    <input type="text" class="form-control" id="nom" placeholder="Nom" required="required">
+                    <input type="text"  minlength="3" class="form-control" id="nom" placeholder="Nom" required="required">
+                    <span id="zoneErreurNom" class="zoneErreurAll"></span>
                 </div>
             </div>
 
             <div class="col-10 mb-3">
                 <div class="form-Prenom">
                     <label for="prenom">prenom</label>
-                    <input type="text" class="form-control" id="prenom" placeholder="Prenom" required="required">
+                    <input type="text" minlength="3" class="form-control" id="prenom" placeholder="Prenom" required="required">
+                    <span id="zoneErreurPrenom" class="zoneErreurAll"></span>
                 </div>
             </div>
 
@@ -64,7 +67,7 @@
             </div>
 
             <div class="col-10">
-                <input type="submit" class="btn btn-success" value="submit"><span id="zoneErreur"></span>
+                <input type="submit" class="btn btn-success" value="submit">
             </div>
 
         </form>
@@ -72,8 +75,8 @@
     </div>
     
 <!-- FORMULAIRE UPDATE  -->
-    <div class="main row justify-content-center formUpdate">
-        <form action="get" id="formUpdate" class="row justify-content mb-4">
+    <div id="formUpdate" class="main row justify-content-center">
+        <form action="get"  class="row justify-content mb-4 w-75">
             <div class="col-10 mb-3">
                 <div class="form-Id">
                     <label for="id">id</label>
@@ -105,8 +108,8 @@
     </div>
 
     <!-- FORMULAIRE DELETE  -->
-    <div class="main row justify-content-center formDelete">
-        <form action="get" id="formDelete" class="row justify-content mb-4">
+    <div id="formDelete" class="main row justify-content-center ">
+        <form action="get" class="row justify-content mb-4 w-75">
             <div class="col-10 mb-3">
                 <div class="form-Id">
                     <label for="id">id</label>

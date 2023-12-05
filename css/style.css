@@ -8,7 +8,10 @@ li {
 .li-Head {
     background-color: black ;
     color: white ;
+}
 
+div {
+    margin:auto;
 }
 
 ul{
@@ -21,6 +24,7 @@ h1{
     text-align: center;
 }
 
-#zoneErreur {
+.zoneErreurAll {
     color: red;
-}
+} 
+
