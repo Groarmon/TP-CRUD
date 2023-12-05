@@ -1,9 +1,23 @@
 li {
     width: 600px ;
     text-align: center;
+    justify-content: center;
+
 }
 
 .li-Head {
-    background-color: black !important;
-    color: white !important ;
+    background-color: black ;
+    color: white ;
+
 }
+
+ul{
+ display: flex;
+ margin: auto;
+ justify-content: center;
+}
+
+h1{
+    text-align: center;
+}
+
