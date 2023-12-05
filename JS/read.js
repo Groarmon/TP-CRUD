@@ -1,20 +1,42 @@
+
+
+// Récuperation des élements HTML
+let idNom = document.getElementById('idNom');
+let idPrenom = document.getElementById('idPrenom');
+let idMail = document.getElementById('idMail');
+let liste = document.getElementById('read');
+
 // Récupération JSON de l'API
 fetch('http://fbrc.esy.es/DWWM22053/Api/api.php/users')
     .then((reponse) => {
         return reponse.json();
     })
     .then((donneeUser) => {
+
         const valNom = donneeUser.users.records.map(index => index[1]);
         const valPrenom = donneeUser.users.records.map(index => index[2]);
         const valMail = donneeUser.users.records.map(index => index[3]);
-
+   
         var nbrUser = donneeUser.users.records.length;
 
         for (let i = 0; i < nbrUser; i++) {
             creerListe(valNom[i], valPrenom[i], valMail[i]);
         }
 
-    });
+    }
+); 
+
+
+// Afficher un seul Users 
+    fetch('http://fbrc.esy.es/DWWM22053/Api/api.php/users/records/')
+        .then((reponse)=> {
+            return reponse.json();
+            console.log(reponse);
+        })
+        // .then((user)=>{
+        //     const user = user.users.records; 
+        //     console.log(user)
+        // })
 
 function creerListe(nom, prenom, mail) {
     // Création de l'élément ul avec la classe boostrap
