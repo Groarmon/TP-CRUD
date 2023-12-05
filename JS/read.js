@@ -1,3 +1,4 @@
+let liste = document.getElementById('read');
 // Récupération JSON de l'API
 fetch('http://fbrc.esy.es/DWWM22053/Api/api.php/users')
     .then((reponse) => {
@@ -52,5 +53,5 @@ fetch('http://fbrc.esy.es/DWWM22053/Api/api.php/users')
         }
 
         // Ajout de l'élément ul au corps du document
-        document.body.appendChild(ul);
+         liste.appendChild(ul);
     }
