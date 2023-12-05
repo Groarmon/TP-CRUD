@@ -11,19 +11,22 @@ document.getElementById('form').addEventListener('submit',function(event) {
     const zoneErreurPrenom = document.getElementById('zoneErreurPrenom');
     const zoneErreurId = document.getElementById('zoneErreurId');
     
-     let regExp =  /^[a-zA-Z]+$/ ;
-     let regExp2 =  /^\d+$/ ;
-            
+        let regExp =  /^[a-zA-Z]+$/ ;
+        let regExp2 =  /^\d+$/ ;
+
+        zoneErreurId.innerText = "";        
+        zoneErreurPrenom.innerText = "";        
+        zoneErreurNom.innerText = "";        
      
-    if(!regExp2.test(id)) {
+        if(!regExp2.test(id)){
             zoneErreurId.innerText = "L'Id est uniquement composé de numéros !";
             event.preventDefault();
         };
-    if (!regExp.test(nom)) {
+        if (!regExp.test(nom)){
         zoneErreurNom.innerText = "Le nom ne doit pas comporter de numéros !";
-    event.preventDefault();
+            event.preventDefault();
         };
-    if (!regExp.test(prenom)) {
+        if (!regExp.test(prenom)){
             zoneErreurPrenom.innerText = "Le prénom ne doit pas comporter de numéros !";
             event.preventDefault();
         };
@@ -48,4 +51,4 @@ document.getElementById('form').addEventListener('submit',function(event) {
        .then(data => console.log(data))
        .catch(error => console.error('Erreur :', error));
    
-   });
+});
