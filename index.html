@@ -29,26 +29,26 @@
             <div class="col-10 mb-3">
                 <div class="form-nom" >
                     <label for="nom">nom</label>
-                    <input type="text" class="form-control" id="nom" placeholder="Nom">
+                    <input type="text" class="form-control" id="nom" placeholder="Nom" required="required">
                 </div>
             </div>
 
             <div class="col-10 mb-3">
                 <div class="form-Prenom">
                     <label for="prenom">prenom</label>
-                    <input type="text" class="form-control" id="prenom" placeholder="Prenom">
+                    <input type="text" class="form-control" id="prenom" placeholder="Prenom" required="required">
                 </div>
             </div>
 
             <div class="col-10 mb-3">
                 <div class="form-email">
                     <label for="email">email</label>
-                    <input type="email" class="form-control" id="email" placeholder="Email">
+                    <input type="email" class="form-control" id="email" placeholder="Email" required="required">
                 </div>
             </div>
 
             <div class="col-10">
-                <input type="submit" class="btn btn-success" value="submit">
+                <input type="submit" class="btn btn-success" value="submit"><span id="zoneErreur"></span>
             </div>
 
         </form>
@@ -59,14 +59,13 @@
     <h1 class="mt-5 ms-5 text-center">Tableau de présentation des utilisateurs</h1>
     <!--liste des users de la BDD-->
     <div id="read">
-
         <ul class="list-group list-group-horizontal col-8">
           <li  id="idNom" class="list-group-item li-Head">Nom</li>
           <li  id="idPrenom" class="list-group-item li-Head">Prénom</li>
           <li  id="idMail" class="list-group-item li-Head">Email</li>
         </ul>
-
-    </div>
+    </div> 
+    <h1>test</h1>
     
     <!--scripts-->    
     <script src="js/create.js"></script>   

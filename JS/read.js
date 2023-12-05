@@ -48,5 +48,5 @@ function creerListe(nom, prenom, mail) {
     }
 
     // Ajout de l'élément ul au corps du document
-     liste.appendChild(ul);
+    liste.appendChild(ul);
 }
