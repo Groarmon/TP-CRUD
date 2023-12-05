@@ -80,7 +80,7 @@ fetch('http://fbrc.esy.es/DWWM22053/Api/api.php/users', {
 
 }
 )
-// METHODE PATCH (UPDATE) (Jean-Eudes, Fayssal, Sylvain)
+// METHODE PUT (UPDATE) (Jean-Eudes, Fayssal, Sylvain)
 document.getElementById('formUpdate').addEventListener('submit', function(event) {
     event.preventDefault();
 
@@ -97,9 +97,10 @@ document.getElementById('formUpdate').addEventListener('submit', function(event)
 
     //console.log(donneeUser.users.records[1][0] === idUpdate);
 
-    fetch("http://fbrc.esy.es/DWWM22053/Api/api.php/users/" + idUpdate, {
+    fetch('http://fbrc.esy.es/DWWM22053/Api/api.php/users/' + idUpdate, {
         
-        method: 'PATCH',
+
+        method: 'PUT',
         body: JSON.stringify(usersUpdate),
     })
 
