@@ -31,4 +31,3 @@ function fetchUserForDelete() {
       document.getElementById("absent").className = "visible";
     });
 }
-  
