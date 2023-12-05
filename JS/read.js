@@ -2,6 +2,7 @@
 let idNom = document.getElementById('idNom');
 let idPrenom = document.getElementById('idPrenom');
 let idMail = document.getElementById('idMail');
+let liste = document.getElementById('read');
 
 // Récupération JSON de l'API
 fetch('http://fbrc.esy.es/DWWM22053/Api/api.php/users')
@@ -47,5 +48,5 @@ function creerListe(nom, prenom, mail) {
     }
 
     // Ajout de l'élément ul au corps du document
-     document.body.appendChild(ul);
+     liste.appendChild(ul);
 }
