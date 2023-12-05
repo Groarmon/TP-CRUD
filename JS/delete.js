@@ -1,21 +1,33 @@
-//Template delete
+const rechercheDeleteID = document.getElementById("idDelete");
+const rechercheDeleteNom = document.getElementById("nomDelete");
+const rechercheDeletePrenom = document.getElementById("prenomDelete");
+const rechercheDeleteEmail = document.getElementById("emailDelete");
 
-//faire en sorte que l'ID viennent d'une case où taper le nombre
-
-
-let id = 42069; // Remplacez ceci par l'ID que vous souhaitez supprimer
-
-if (confirm("Êtes-vous sûr de vouloir supprimer cette entrée ?")) { //afficher une fenêtre de confirmation
-
-    fetch("http://fbrc.esy.es/DWWM22053/Api/api.php/users"+ id, {
-        method: 'DELETE',
-    })
+function fetchUserForDelete() {
+    var deleteId = document.getElementById("deleteId").value;
+    fetch('http://fbrc.esy.es/DWWM22053/Api/api.php/users/' + deleteId)
     .then(response => {
-        if (!response.ok) {
-            throw new Error(`ERR: cet ID n'existe pas`);
-        }
-        return response.json();
+      if (!response.ok) {
+          throw new Error('Erreur ' + response.status);
+      }
+      return response.json();
     })
-    .then(data => console.log(data))
-    .catch(error => console.error('Erreur:', error));
+    .then(data => {
+
+          document.getElementById("existe").className = "visible";
+          document.getElementById("absent").className = "invisible";
+          rechercheDeleteID.value = data.id;
+          rechercheDeleteNom.value = data.nom;
+          rechercheDeletePrenom.value = data.prenom;
+          rechercheDeleteEmail.value = data.email;
+          console.log('Nom: ' + data.nom);
+          console.log('Prénom: ' + data.prenom);
+          console.log('Mail: ' + data.email);
+      
+    })
+    .catch((error) => {
+      console.error('Erreur:', error);
+      document.getElementById("existe").className = "invisible";
+      document.getElementById("absent").className = "visible";
+    });
 }
