@@ -11,6 +11,7 @@
 
 <body>
 
+
 <!-- BOUTON RADIO  -->
     <div class="form-check form-check-inline m-">
         <input class="form-check-input" type="radio" name="inlineRadioOptions" id="radioCreate" value="create" checked>
@@ -25,7 +26,7 @@
         <label class="form-check-label" for="inlineRadio3">Delete</label>
       </div> <br><br>
 
-      <h1 class="text-center mt-5  ">TP CRUD</h1>
+    <h1 class="text-center mt-5  ">TP CRUD</h1>
 
       <br>
       <br>
@@ -34,7 +35,7 @@
   
     <div class="main row justify-content-center" id="formCreate">
         <!--Formulaire d'ajout-->
-        <form action="get" id="form" class="row justify-content-center mb-4 w-75">
+        <form action="get" id="form" class="row justify-content-center mb-4">
 
             <div class="col-10 mb-3">
                 <div class="form-Id">
@@ -73,12 +74,16 @@
     </div>
     
 <!-- FORMULAIRE UPDATE  -->
-    <div class="main row justify-content-center formUpdate">
-        <form action="get" id="formUpdate" class="row justify-content mb-4">
+    <div class="main row justify-content-center formUpdate" id="formUpdate">
+        <input type="text" id="userId" name="userId">
+
+        <button onclick="fetchUser()">Rechercher</button>
+
+        <form action="get"  class="row justify-content mb-4">
             <div class="col-10 mb-3">
                 <div class="form-Id">
                     <label for="id">id</label>
-                    <input type="text" class="form-control" id="idUpdate" required="required" placeholder="Identifiant">
+                    <input type="text" class="form-control" id="idUpdate" required="required" placeholder="Identifiant" disabled >
                 </div>
             </div>
             <div class="col-10 mb-3">
@@ -106,8 +111,15 @@
     </div>
 
     <!-- FORMULAIRE DELETE  -->
-    <div class="main row justify-content-center formDelete">
-        <form action="get" id="formDelete" class="row justify-content mb-4">
+    
+    <div class="main row justify-content-center" id="formDelete">
+        <input type="text" id="deleteId" name="deleteId">
+
+        <button onclick="fetchUserForDelete()">Rechercher</button>
+
+        <p id="existe" class="invisible ">CA EXISTE</p>
+        <p id="absent" class="invisible ">CA EXISTE PAS</p>
+        <form action="get"  class="row justify-content mb-4">
             <div class="col-10 mb-3">
                 <div class="form-Id">
                     <label for="id">id</label>
@@ -130,6 +142,8 @@
         </ul>
     </div> 
  <!--scripts-->
+ <script src="JS/delete.js"></script>
+ <script src="JS/recherche.js"></script>
  <script src="JS/boutonRadio.js"></script>    
  <script src="JS/create.js"></script>   
  <script src="JS/read.js"></script>
