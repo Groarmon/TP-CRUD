@@ -4,6 +4,18 @@ li {
     justify-content: center;
 
 }
+div{
+
+    margin : auto;
+}
+
+.visible{
+    display: inline;
+}
+
+.invisible{
+    display: none;
+}
 
 .li-Head {
     background-color: black ;
@@ -24,4 +36,3 @@ h1{
 #zoneErreur {
     color: red;
 }
-

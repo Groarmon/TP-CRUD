@@ -1,4 +1,5 @@
 
+
 // Récuperation des élements HTML
 let idNom = document.getElementById('idNom');
 let idPrenom = document.getElementById('idPrenom');
@@ -63,5 +64,5 @@ function creerListe(nom, prenom, mail) {
     }
 
     // Ajout de l'élément ul au corps du document
-    liste.appendChild(ul);
+     document.body.appendChild(ul);
 }
