@@ -34,27 +34,31 @@
       <h1 class="mt-5 ms-5 text-center">Formulaire d'ajout</h1>
   
     <div class="main row justify-content-center" id="formCreate">
+      
         <!--Formulaire d'ajout-->
         <form action="get" id="form" class="row justify-content-center mb-4">
 
             <div class="col-10 mb-3">
                 <div class="form-Id">
                     <label for="id">id</label>
-                    <input type="text" class="form-control" id="id" placeholder="Identifiant">
+                    <input type="text" class="form-control" id="id" placeholder="Identifiant" required="required">
+                    <span id="zoneErreurId" class="zoneErreurAll"></span>
                 </div>
             </div>
 
             <div class="col-10 mb-3">
                 <div class="form-nom" >
                     <label for="nom">nom</label>
-                    <input type="text" class="form-control" id="nom" placeholder="Nom" required="required">
+                    <input type="text"  minlength="3" class="form-control" id="nom" placeholder="Nom" required="required">
+                    <span id="zoneErreurNom" class="zoneErreurAll"></span>
                 </div>
             </div>
 
             <div class="col-10 mb-3">
                 <div class="form-Prenom">
                     <label for="prenom">prenom</label>
-                    <input type="text" class="form-control" id="prenom" placeholder="Prenom" required="required">
+                    <input type="text" minlength="3" class="form-control" id="prenom" placeholder="Prenom" required="required">
+                    <span id="zoneErreurPrenom" class="zoneErreurAll"></span>
                 </div>
             </div>
 
@@ -66,7 +70,7 @@
             </div>
 
             <div class="col-10">
-                <input type="submit" class="btn btn-success" value="submit"><span id="zoneErreur"></span>
+                <input type="submit" class="btn btn-success" value="submit">
             </div>
 
         </form>
@@ -74,12 +78,14 @@
     </div>
     
 <!-- FORMULAIRE UPDATE  -->
-    <div class="main row justify-content-center formUpdate" id="formUpdate">
+
+    <div id="formUpdate" class="main row justify-content-center">
         <input type="text" id="userId" name="userId">
 
         <button onclick="fetchUser()">Rechercher</button>
 
-        <form action="get"  class="row justify-content mb-4">
+        <form action="get"  class="row justify-content mb-4 w-75">
+
             <div class="col-10 mb-3">
                 <div class="form-Id">
                     <label for="id">id</label>
@@ -110,16 +116,16 @@
         </form>
     </div>
 
-    <!-- FORMULAIRE DELETE  -->
-    
-    <div class="main row justify-content-center" id="formDelete">
+    <!-- FORMULAIRE DELETE  -->  
+    <div id="formDelete" class="main row justify-content-center ">
         <input type="text" id="deleteId" name="deleteId">
 
         <button onclick="fetchUserForDelete()">Rechercher</button>
 
         <p id="existe" class="invisible ">CA EXISTE</p>
         <p id="absent" class="invisible ">CA EXISTE PAS</p>
-        <form action="get"  class="row justify-content mb-4">
+        <form action="get" class="row justify-content mb-4 w-75">
+
             <div class="col-10 mb-3">
                 <div class="form-Id">
                     <label for="id">id</label>
@@ -136,7 +142,8 @@
     <!--liste des users de la BDD-->
     <div id="read">
         <ul class="list-group list-group-horizontal col-8">
-          <li  id="idNom" class="list-group-item li-Head">Nom</li>
+            <li  id="idUser" class="list-group-item li-Head">Id</li>
+            <li  id="idNom" class="list-group-item li-Head">Nom</li>
           <li  id="idPrenom" class="list-group-item li-Head">Prénom</li>
           <li  id="idMail" class="list-group-item li-Head">Email</li>
         </ul>
