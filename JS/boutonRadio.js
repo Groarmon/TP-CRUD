@@ -9,6 +9,15 @@ document.addEventListener('DOMContentLoaded', function () {
     const formUpdate = document.getElementById('formUpdate');
     const formDelete = document.getElementById('formDelete');
 
+    formCreate.style.display = 'block';
+    formCreate.style.visibility = 'visible';
+
+    formUpdate.style.display = 'none';
+    formUpdate.style.visibility = 'hidden';
+
+    formDelete.style.display = 'none';
+    formDelete.style.visibility = 'hidden';
+
     radioCreate.addEventListener('change', function () {
         if (this.checked) {
             formCreate.style.display = 'block';

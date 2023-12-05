@@ -1,9 +1,3 @@
-// Récuperation des élements HTML
-let idNom = document.getElementById('idNom');
-let idPrenom = document.getElementById('idPrenom');
-let idMail = document.getElementById('idMail');
-let liste = document.getElementById('read');
-
 // Récupération JSON de l'API
 fetch('http://fbrc.esy.es/DWWM22053/Api/api.php/users')
     .then((reponse) => {
@@ -48,5 +42,5 @@ function creerListe(nom, prenom, mail) {
     }
 
     // Ajout de l'élément ul au corps du document
-    liste.appendChild(ul);
+     document.body.appendChild(ul);
 }
