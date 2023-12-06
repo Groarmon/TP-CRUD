@@ -10,6 +10,13 @@ function exist() {
         icon: "info"
     })
 }
+
+function confirmationModification(data) {
+    swal.fire({
+        title: "Vous venez de modifier l'ID " + data,
+        icon: "success"
+    })
+}
 function suppressionAnnule() {
     swal.fire({
         title: "Suppression annulé",

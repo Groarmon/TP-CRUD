@@ -33,7 +33,8 @@ document.getElementById('formUpdate').addEventListener('submit', function(event)
                 break; 
               }
             }
-             if(emailExiste){
+          
+          if(emailExiste ){
       
               swal.fire({
                   title: "Le mail existe déjà.",
@@ -62,7 +63,7 @@ document.getElementById('formUpdate').addEventListener('submit', function(event)
                     return response.json();
                 })
                 
-                .then(usersUpdate => console.log(usersUpdate))
+                .then(usersUpdate => confirmationModification(idUpdate))
                 .catch(error => console.error(error));
               }
           }
@@ -70,21 +71,7 @@ document.getElementById('formUpdate').addEventListener('submit', function(event)
         .catch(error => console.error('Error:', error));
       });
       
-      if (dataUsers.users.records[idUpdate][3] == emailUpdate) {
-        fetch("http://fbrc.esy.es/DWWM22053/Api/api.php/users/" + idUpdate, {
-        
-        method: 'PUT',
-        body: JSON.stringify(usersUpdate),
-    })
 
-    .then(response => {
-        return response.json();
-    })
-    
-    .then(usersUpdate => console.log(usersUpdate))
-    .catch(error => console.error(error));
-
-      }
       
     //console.log(donneeUser.users.records[1][0] === idUpdate);
     
