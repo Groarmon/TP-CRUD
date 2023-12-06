@@ -1,8 +1,8 @@
 document.getElementById('form').addEventListener('submit',function(event) {
-    
-    //event.preventDefault();
-    
-    
+
+    event.preventDefault();
+
+
     const id = document.getElementById('id').value;
     const nom = document.getElementById('nom').value;
     const prenom = document.getElementById('prenom').value;
@@ -10,14 +10,22 @@ document.getElementById('form').addEventListener('submit',function(event) {
     const zoneErreurNom = document.getElementById('zoneErreurNom');
     const zoneErreurPrenom = document.getElementById('zoneErreurPrenom');
     const zoneErreurId = document.getElementById('zoneErreurId');
-    
-        let regExp =  /^[a-zA-Z]+$/ ;
-        let regExp2 =  /^\d+$/ ;
 
-        zoneErreurId.innerText = "";        
-        zoneErreurPrenom.innerText = "";        
-        zoneErreurNom.innerText = "";        
-     
+    let regExp =  /^[a-zA-Z]+$/ ;
+    let regExp2 =  /^\d+$/ ;
+
+    zoneErreurId.innerText = "";
+    zoneErreurPrenom.innerText = "";
+    zoneErreurNom.innerText = "";
+
+    const users = {
+        id: id,
+        nom: nom,
+        prenom: prenom,
+        email: email,
+    };
+
+    if (!regExp2.test(id) || !regExp.test(nom) || !regExp.test(prenom)) {
         if(!regExp2.test(id)){
             zoneErreurId.innerText = "L'Id est uniquement composé de numéros !";
             event.preventDefault();
@@ -30,25 +38,18 @@ document.getElementById('form').addEventListener('submit',function(event) {
             zoneErreurPrenom.innerText = "Le prénom ne doit pas comporter de numéros !";
             event.preventDefault();
         };
-      
-      
-       const users = {
-           id: id,
-           nom: nom,
-           prenom: prenom,
-           email: email,
-       };
-   
-       fetch('http://fbrc.esy.es/DWWM22053/Api/api.php/users', {
-           method: 'POST', // GET. DELETE. PUT.. 
-           /**headers: {
-               'contentType':'application/JSON',
-           },**/
-           
-           body: JSON.stringify(users),
-       })
-       .then(response => response.json())
-       .then(data => console.log(data))
-       .catch(error => console.error('Erreur :', error));
-   
+    } else {
+
+        fetch('http://fbrc.esy.es/DWWM22053/Api/api.php/users', {
+            method: 'POST', // GET. DELETE. PUT.. 
+            //headers: {
+                //'contentType':'application/JSON',//
+            //}//
+
+            body: JSON.stringify(users),
+        })
+        .then(response => response.json())
+        .then(data => confirm("Vous venez de créer l'ID " + data + " ."))
+        .catch(error => console.error('Erreur :', error));
+    }
 });

@@ -118,23 +118,18 @@
 
     <!-- FORMULAIRE DELETE  -->  
     <div id="formDelete" class="main row justify-content-center ">
-        <input type="text" id="deleteId" name="deleteId">
-
-        <button onclick="fetchUserForDelete()">Rechercher</button>
-
-        <p id="existe" class="invisible ">CA EXISTE</p>
-        <p id="absent" class="invisible ">CA EXISTE PAS</p>
-        <form action="get" class="row justify-content mb-4 w-75">
-
+        <form action="get" class="row justify-content mb-4 w-75 " >
             <div class="col-10 mb-3">
                 <div class="form-Id">
                     <label for="id">id</label>
                     <input type="text" class="form-control" id="idDelete" required="required" placeholder="Identifiant">
                 </div>
             </div>
+
             <div class="col-10">
-                <input type="submit" class="btn btn-danger" value="Delete">
+                <input type="submit" class="btn btn-danger" value="Delete" id="popo">
             </div>
+
         </form>
     </div>
 
@@ -149,7 +144,6 @@
         </ul>
     </div> 
  <!--scripts-->
- <script src="JS/delete.js"></script>
  <script src="JS/recherche.js"></script>
  <script src="JS/boutonRadio.js"></script>    
  <script src="JS/create.js"></script>   
