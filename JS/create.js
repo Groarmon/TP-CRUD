@@ -34,6 +34,13 @@ document.getElementById('form').addEventListener('submit',function(event) {
         break; 
       }
     }
+    let emailExiste = false;
+    for (let i = 0; i < longueurRecords; i++) {
+        if (dataUsers.users.records[i][3] == email) {
+          emailExiste = true;
+          break; 
+        }
+      }
     if (idExiste) {
 
         swal.fire({
@@ -41,6 +48,13 @@ document.getElementById('form').addEventListener('submit',function(event) {
         icon: "info"
     })
         
+    } else if(emailExiste){
+
+        swal.fire({
+            title: "Le mail existe déjà.",
+            icon: "info"
+        })
+
     } else {
         if (!regExp2.test(id) || !regExp.test(nom) || !regExp.test(prenom)) {
             if(!regExp2.test(id)){
