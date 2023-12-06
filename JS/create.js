@@ -1,5 +1,8 @@
+// ON COMMENCE PAR RECUPERER LES VALEURS DES IDs
+
 document.getElementById('form').addEventListener('submit',function(event) {
     event.preventDefault();
+
     const id = document.getElementById('id').value;
     const nom = document.getElementById('nom').value;
     const prenom = document.getElementById('prenom').value;
@@ -8,13 +11,17 @@ document.getElementById('form').addEventListener('submit',function(event) {
     const zoneErreurPrenom = document.getElementById('zoneErreurPrenom');
     const zoneErreurId = document.getElementById('zoneErreurId');
 
-    let regExp =  /^[a-zA-Z]+$/ ;
-    let regExp2 =  /^\d+$/ ;
+    // ON INITIALISE LES EXPRESSIONS REGULIERES 
 
+    let regExp =  /^[a-zA-Z]+$/ ; // SEULEMENT DES STRINGS AUTORISEES
+    let regExp2 =  /^\d+$/ ; // SEULEMENT DES NOMBRES AUTORISEES
+
+// INITIALISER LE CONTENU SPAN DES ERREURS A VIDE 
     zoneErreurId.innerText = "";
     zoneErreurPrenom.innerText = "";
     zoneErreurNom.innerText = "";
 
+// ON CREE L'OBJET USER (tableau clé = valeur) ET ON L'INITIALISE AVEC LES VALEURS SAISIES
     const users = {
         id: id,
         nom: nom,
@@ -22,11 +29,16 @@ document.getElementById('form').addEventListener('submit',function(event) {
         email: email,
     };
 
-    fetch('http://fbrc.esy.es/DWWM22053/Api/api.php/users/')
+// ON UTILISE LA REQUETE FETCH POUR RECUPERER LES INFORMATIONS DANS LA BASE DE DONNEES
+
+fetch('http://fbrc.esy.es/DWWM22053/Api/api.php/users/')
   .then(response => response.json())
   .then(dataUsers => {
+    console.log(dataUsers);
     const longueurRecords = dataUsers.users.records.length;
+
     // On recherche dans le tableau l'occurrence avec la donnée saisie
+
     let idExiste = false;
     for (let i = 0; i < longueurRecords; i++) {
       if (dataUsers.users.records[i][0] == id) {
@@ -54,8 +66,13 @@ document.getElementById('form').addEventListener('submit',function(event) {
             title: "Le mail existe déjà.",
             icon: "info"
         })
-
-    } else {
+    } 
+       
+    // ON CONTROLE LES CHAMPS DE SAISIES AVEC LES REGEX SAISIT PLUS HAUT :
+    // let regExp =  /^[a-zA-Z]+$/ ; // SEULEMENT DES STRINGS AUTORISEES
+    // let regExp2 =  /^\d+$/ ; // SEULEMENT DES NOMBRES AUTORISEES
+    
+    else {
         if (!regExp2.test(id) || !regExp.test(nom) || !regExp.test(prenom)) {
             if(!regExp2.test(id)){
                 zoneErreurId.innerText = "L'Id est uniquement composé de numéros !";
@@ -69,17 +86,18 @@ document.getElementById('form').addEventListener('submit',function(event) {
                 zoneErreurPrenom.innerText = "Le prénom ne doit pas comporter de numéros !";
                 event.preventDefault();
             };
-        } else {
-    
+        } 
+// ENFIN NOUS Y SOMMES : ON CREER LA REQUETE PUT 
+        else { 
             fetch('http://fbrc.esy.es/DWWM22053/Api/api.php/users', {
-                method: 'POST', // GET. DELETE. PUT.. 
-                //headers: {
-                    //'contentType':'application/JSON',//
-                //}//
-    
+                method: 'POST', // DELETE. PUT.. 
+
+// ON MET NOTRE OBJET EN STRING LISIBLE PAR LA BDD
                 body: JSON.stringify(users),
             })
             .then(response => response.json())
+            
+// ON AFFICHE CA DANS UNE JOLIE SWEET ALERT (VOIR sweetAlert.js)
             .then(data => confirmationCreation(data))
             .catch(error => console.error('Erreur :', error));
         }
