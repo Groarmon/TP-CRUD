@@ -1,11 +1,26 @@
-li {
+body {
+    margin: auto;
+    padding-left: 150px;
+    padding-right: 150px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg stroke='%23CCC' stroke-width='0' %3E%3Crect fill='%23F5F5F5' x='-60' y='-60' width='110' height='240'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+li, .block-btn-radio  {
     width: 600px ;
     text-align: center;
     justify-content: center;
 
 }
-div{
 
+
+#formCreate{
+    display: flex;
+    width: 1000px;
+    margin: auto;
+    justify-content: center;
+}
+
+div{
     margin : auto;
 }
 
@@ -22,10 +37,6 @@ div{
     color: white ;
 }
 
-div {
-    margin:auto;
-}
-
 ul{
  display: flex;
  margin: auto;
@@ -36,7 +47,19 @@ h1{
     text-align: center;
 }
 
+.listeUsers{
+    padding-bottom: 30px ;
+}
+
 .zoneErreurAll {
     color: red;
 } 
+
+.block-btn-radio{
+    display: flex;
+    justify-content: center;
+    height: 50px;
+    align-items: center;
+}
+
 

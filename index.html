@@ -11,33 +11,34 @@
 
 <body>
 
-
-<!-- BOUTON RADIO  -->
-    <div class="form-check form-check-inline m-">
-        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="radioCreate" value="create" checked>
-        <label class="form-check-label" for="inlineRadio1">Create</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="radioUpdate" value="update">
-        <label class="form-check-label" for="inlineRadio2">Update</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="radioDelete" value="delete">
-        <label class="form-check-label" for="inlineRadio3">Delete</label>
-      </div> <br><br>
-
     <h1 class="text-center mt-5  ">TP CRUD</h1>
 
-      <br>
-      <br>
-      
-      <h1 class="mt-5 ms-5 text-center">Formulaire d'ajout</h1>
-  
-    <div class="main row justify-content-center" id="formCreate">
-      
-        <!--Formulaire d'ajout-->
-        <form action="get" id="form" class="row justify-content-center mb-4">
+<!-- BOUTON RADIO  -->
+    <div class="block-btn-radio">
+        <div class="form-check ">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="radioCreate" value="create" checked>
+        <label class="form-check-label" for="inlineRadio1">Create</label>
+        </div>
+        <div class="form-check ">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="radioUpdate" value="update">
+        <label class="form-check-label" for="inlineRadio2">Update</label>
+        </div>
+        <div class="form-check ">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="radioDelete" value="delete">
+        <label class="form-check-label" for="inlineRadio3">Delete</label>
+        </div> 
+    </div>
 
+
+      <br>
+      <br>
+      
+      
+      
+      <!--Formulaire d'ajout-->
+      <div id="formCreate" class="main row justify-content-center align-content-center">
+        <h2 class="mt-5 ms-5 text-center">Formulaire d'ajout</h2>
+        <form action="get" id="form" class="row justify-content-center mb-4">
             <div class="col-10 mb-3">
                 <div class="form-Id">
                     <label for="id">id</label>
@@ -45,7 +46,6 @@
                     <span id="zoneErreurId" class="zoneErreurAll"></span>
                 </div>
             </div>
-
             <div class="col-10 mb-3">
                 <div class="form-nom" >
                     <label for="nom">nom</label>
@@ -53,7 +53,6 @@
                     <span id="zoneErreurNom" class="zoneErreurAll"></span>
                 </div>
             </div>
-
             <div class="col-10 mb-3">
                 <div class="form-Prenom">
                     <label for="prenom">prenom</label>
@@ -61,79 +60,85 @@
                     <span id="zoneErreurPrenom" class="zoneErreurAll"></span>
                 </div>
             </div>
-
             <div class="col-10 mb-3">
                 <div class="form-email">
                     <label for="email">email</label>
                     <input type="email" class="form-control" id="email" placeholder="Email" required="required">
                 </div>
             </div>
-
             <div class="col-10">
                 <input type="submit" class="btn btn-success" value="submit">
             </div>
-
         </form>
-
     </div>
     
 <!-- FORMULAIRE UPDATE  -->
 
-    <div id="formUpdate" class="main row justify-content-center">
+    <div id="formUpdate" class="main row justify-content-center align-content-center ">
+        <h2 class="mt-5 ms-5 text-center">Update le forumlaire</h2>
         <input type="text" id="userId" name="userId">
 
         <button onclick="fetchUser()">Rechercher</button>
 
-        <form action="get"  class="row justify-content mb-4 w-75">
+        <form action="get"  class="row justify-content-center mb-4">
 
-            <div class="col-10 mb-3">
+            <div class="col-7 mb-3">
                 <div class="form-Id">
                     <label for="id">id</label>
                     <input type="text" class="form-control" id="idUpdate" required="required" placeholder="Identifiant" disabled >
                 </div>
             </div>
-            <div class="col-10 mb-3">
+            <div class="col-7 mb-3">
                 <div class="form-nom" >
                     <label for="nom">nom</label>
                     <input type="text" class="form-control" id="nomUpdate"  placeholder="Nom">
                 </div>
             </div>
-            <div class="col-10 mb-3">
+            <div class="col-7 mb-3">
                 <div class="form-Prenom">
                     <label for="prenom">prenom</label>
                     <input type="text" class="form-control" id="prenomUpdate"  placeholder="Prenom">
                 </div>
             </div>
-            <div class="col-10 mb-3">
+            <div class="col-7 mb-3">
                 <div class="form-email">
                     <label for="email">email</label>
                     <input type="email" class="form-control" id="emailUpdate" placeholder="Email">
                 </div>
             </div>
-            <div class="col-10">
+            <div class="col-7">
                 <input type="submit" class="btn btn-warning" value="Update">
             </div>
         </form>
     </div>
 
     <!-- FORMULAIRE DELETE  -->  
-    <div id="formDelete" class="main row justify-content-center ">
-        <form action="get" class="row justify-content mb-4 w-75 " >
-            <div class="col-10 mb-3">
+
+    <div id="formDelete" class="main row justify-content-center align-content-center ">
+        <h2 class="mt-5 ms-5 text-center">Supprimer un User</h2>
+        <input type="text" id="deleteId" name="deleteId">
+
+        <button onclick="fetchUserForDelete()">Rechercher</button>
+
+        <p id="existe" class="invisible ">CA EXISTE</p>
+        <p id="absent" class="invisible ">CA EXISTE PAS</p>
+        <form action="get" class="row justify-conten-center mb-4">
+
+            <div class="col-7 mb-3">
                 <div class="form-Id">
                     <label for="id">id</label>
                     <input type="text" class="form-control" id="idDelete" required="required" placeholder="Identifiant">
                 </div>
             </div>
-
             <div class="col-10">
                 <input type="submit" class="btn btn-danger" value="Delete" id="popo">
+
             </div>
 
         </form>
     </div>
 
-    <h1 class="mt-5 ms-5 text-center">Tableau de présentation des utilisateurs</h1>
+    <h2 class="mt-5 ms-5 text-center listeUsers">Tableau de présentation des utilisateurs</h2>
     <!--liste des users de la BDD-->
     <div id="read">
         <ul class="list-group list-group-horizontal col-8">
