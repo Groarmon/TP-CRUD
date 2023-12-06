@@ -9,7 +9,7 @@ document.getElementById('popo').addEventListener('click', function (event) {
     .then(dataUsers => {
       const longueurRecords = dataUsers.users.records.length;
 
-      // On recherche dans le tableau l'occurrence avec la donnée saisie
+      // On recherche dans le tableau l'occurrence ID
       let idExiste = false;
       for (let i = 0; i < longueurRecords; i++) {
         if (dataUsers.users.records[i][0] == idDelete) {
@@ -31,28 +31,27 @@ document.getElementById('popo').addEventListener('click', function (event) {
           cancelButtonText: "Non"
         })
 
-          .then((result) => {
-            if (result.isConfirmed) {
-              fetch("http://fbrc.esy.es/DWWM22053/Api/api.php/users/" + idDelete, {
-                method: "DELETE",
+        .then((result) => {
+          if (result.isConfirmed) {
+            fetch("http://fbrc.esy.es/DWWM22053/Api/api.php/users/" + idDelete, {
+              method: "DELETE",
+            })
+              .then(response => response.json())
+              .then(data => {
+                Swal.fire(
+                  "Supprimé!",
+                  "L'ID à été supprimé",
+                  "success"
+                )
               })
-                .then(response => response.json())
-                .then(data => {
-                  Swal.fire(
-                    "Supprimé!",
-                    "L'ID à été supprimé",
-                    "success"
-                  )
-                })
-
-                .catch((error) => {
-                  console.error('Erreur:', error);
-                });
-            }
-            else {
-              suppressionAnnule();
-            }
-          })
+              .catch((error) => {
+                console.error('Erreur:', error);
+              });
+          }
+          else {
+            suppressionAnnule();
+          }
+        })
       }
       else {
         dontExist();

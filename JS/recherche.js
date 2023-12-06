@@ -3,6 +3,10 @@ const rechercheNom = document.getElementById("nomUpdate");
 const recherchePrenom = document.getElementById("prenomUpdate");
 const rechercheEmail = document.getElementById("emailUpdate");
 
+
+/**
+ * Rempli un formulaire avec les données correspondante à l'ID saisie.
+ */
 function fetchUser() {
     var userId = document.getElementById("userId").value;
    

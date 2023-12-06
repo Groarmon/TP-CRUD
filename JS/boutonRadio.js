@@ -9,6 +9,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const formUpdate = document.getElementById('formUpdate');
     const formDelete = document.getElementById('formDelete');
 
+
+    //Etat par défaut
     formCreate.style.display = 'block';
     formCreate.style.visibility = 'visible';
 
@@ -18,6 +20,8 @@ document.addEventListener('DOMContentLoaded', function () {
     formDelete.style.display = 'none';
     formDelete.style.visibility = 'hidden';
 
+
+    //Bouton affichant le mode Create
     radioCreate.addEventListener('change', function () {
         if (this.checked) {
             formCreate.style.display = 'block';
@@ -31,6 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
+    //Bouton affichant le mode update
     radioUpdate.addEventListener('change', function () {
         if (this.checked) {
             formCreate.style.display = 'none';
@@ -44,6 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
+    //Bouton affichant le mode delete
     radioDelete.addEventListener('change', function () {
         if (this.checked) {
             formCreate.style.display = 'none';

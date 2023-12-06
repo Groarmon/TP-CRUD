@@ -34,7 +34,7 @@ document.getElementById('formUpdate').addEventListener('submit', function(event)
 // PROMESSE DE REPONSE ENVOYEE ET RENVOIE UN OBJET AU FORMAT JSON
         .then(response => response.json())
 
-// ON FAIT UNE FONCTION FLECHER <3
+// ON FAIT UNE FONCTION FLECHEE <3
         .then(dataUsers => {
           const longueurRecords = dataUsers.users.records.length;
 

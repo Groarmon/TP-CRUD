@@ -37,8 +37,7 @@ fetch('http://fbrc.esy.es/DWWM22053/Api/api.php/users/')
     console.log(dataUsers);
     const longueurRecords = dataUsers.users.records.length;
 
-    // On recherche dans le tableau l'occurrence avec la donnée saisie
-
+    // On recherche dans le tableau l'occurrence ID
     let idExiste = false;
     for (let i = 0; i < longueurRecords; i++) {
       if (dataUsers.users.records[i][0] == id) {
@@ -46,33 +45,28 @@ fetch('http://fbrc.esy.es/DWWM22053/Api/api.php/users/')
         break; 
       }
     }
+    // On recherche dans le tableau l'occurrence email
     let emailExiste = false;
     for (let i = 0; i < longueurRecords; i++) {
         if (dataUsers.users.records[i][3] == email) {
           emailExiste = true;
           break; 
         }
-      }
+    }
+    // Controle de l'existence ID et Mail
     if (idExiste) {
-
         swal.fire({
         title: "L'ID existe déjà.",
         icon: "info"
-    })
+        })
         
     } else if(emailExiste){
-
         swal.fire({
             title: "Le mail existe déjà.",
             icon: "info"
         })
-    } 
-       
-    // ON CONTROLE LES CHAMPS DE SAISIES AVEC LES REGEX SAISIT PLUS HAUT :
-    // let regExp =  /^[a-zA-Z]+$/ ; // SEULEMENT DES STRINGS AUTORISEES
-    // let regExp2 =  /^\d+$/ ; // SEULEMENT DES NOMBRES AUTORISEES
-    
-    else {
+    // Controle du bon format des saisies utilisateur    
+    } else {
         if (!regExp2.test(id) || !regExp.test(nom) || !regExp.test(prenom)) {
             if(!regExp2.test(id)){
                 zoneErreurId.innerText = "L'Id est uniquement composé de numéros !";
@@ -87,10 +81,10 @@ fetch('http://fbrc.esy.es/DWWM22053/Api/api.php/users/')
                 event.preventDefault();
             };
         } 
-// ENFIN NOUS Y SOMMES : ON CREER LA REQUETE PUT 
+// ENFIN NOUS Y SOMMES : ON CREE LA REQUETE POST 
         else { 
             fetch('http://fbrc.esy.es/DWWM22053/Api/api.php/users', {
-                method: 'POST', // DELETE. PUT.. 
+                method: 'POST', 
 
 // ON MET NOTRE OBJET EN STRING LISIBLE PAR LA BDD
                 body: JSON.stringify(users),
