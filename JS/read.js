@@ -8,7 +8,6 @@
         })
         .then((donneeUser) => {
             let valId =  donneeUser.users.records;
-console.log(donneeUser.users.records);
             const valNom = donneeUser.users.records.map(index => index[1]);
             const valPrenom = donneeUser.users.records.map(index => index[2]);
             const valMail = donneeUser.users.records.map(index => index[3]);
@@ -18,12 +17,11 @@ console.log(donneeUser.users.records);
             let indice = 0;
             for (let i = 0; i < nbrUser; i++) {
                 creerListe(valId[indice][0], valNom[i], valPrenom[i], valMail[i]);
-                var li = document.createElement("li");
-                li.classList.add("list-group-item");
                 indice ++;
             }       
         });
         
+        // Fonction pour créer une liste et l'ajouter à la page HTML
         function creerListe(id, nom, prenom, mail) {
             // Création de l'élément ul avec la classe bootstrap
             var ul = document.createElement("ul");
