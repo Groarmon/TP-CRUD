@@ -116,12 +116,7 @@
 
     <div id="formDelete" class="main row justify-content-center align-content-center ">
         <h2 class="mt-5 ms-5 text-center">Supprimer un User</h2>
-        <input type="text" id="deleteId" name="deleteId">
-
-        <button onclick="fetchUserForDelete()">Rechercher</button>
-
-        <p id="existe" class="invisible ">CA EXISTE</p>
-        <p id="absent" class="invisible ">CA EXISTE PAS</p>
+        
         <form action="get" class="row justify-conten-center mb-4">
 
             <div class="col-7 mb-3">
@@ -130,7 +125,7 @@
                     <input type="text" class="form-control" id="idDelete" required="required" placeholder="Identifiant">
                 </div>
             </div>
-            <div class="col-10">
+            <div class="col-7">
                 <input type="submit" class="btn btn-danger" value="Delete" id="popo">
 
             </div>
