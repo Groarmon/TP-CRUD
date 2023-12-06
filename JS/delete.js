@@ -47,13 +47,11 @@ document.getElementById('popo').addEventListener('click', function (event) {
               .catch((error) => {
                 console.error('Erreur:', error);
               });
-          }
-          else {
+          } else {
             suppressionAnnule();
           }
         })
-      }
-      else {
+      } else {
         dontExist();
       }
     })
