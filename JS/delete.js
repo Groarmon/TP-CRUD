@@ -34,7 +34,10 @@ document.getElementById('popo').addEventListener('click', function(event) {
         console.log('Suppression annulée.');
       }
     } else {
-      alert('Aucun enregistrement trouvé avec l\'ID ' + idDelete);
+      function showAlert() {
+        Swal.fire('Bonjour le monde!')
+    };
+    showAlert()
     }
   })
   .catch(error => console.error('Error:', error));
