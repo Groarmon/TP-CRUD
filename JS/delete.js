@@ -35,9 +35,10 @@ document.getElementById('popo').addEventListener('click', function(event) {
           .then(data => {
             Swal.fire(
               "Supprimé!",
-              "Votre fichier a été supprimé.",
+              "L'ID à été supprimé",
               "success"
             )
+
           })
           .catch((error) => {
             console.error('Erreur:', error);
