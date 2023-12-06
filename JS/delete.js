@@ -17,30 +17,38 @@ document.getElementById('popo').addEventListener('click', function(event) {
     }
     if (idExiste) {
       // Si l'ID existe, demander confirmation avant la suppression
-      const confirmDelete = confirm("Êtes-vous sûr de vouloir supprimer l'ID " + idDelete + " ?");
-      if (confirmDelete) {
-        // Si la confirmation est donnée, effectuer la suppression avec la méthode DELETE
-        fetch('http://fbrc.esy.es/DWWM22053/Api/api.php/users/' + idDelete, {
-          method: 'DELETE',
-        })
+      Swal.fire({
+        title: "Êtes-vous sûr de vouloir supprimer cet ID ?",
+        text: "Vous ne pourrez pas revenir en arrière!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Oui",
+        cancelButtonText: "Non"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          fetch("http://fbrc.esy.es/DWWM22053/Api/api.php/users/" + idDelete, {
+            method: "DELETE",
+          })
           .then(response => response.json())
           .then(data => {
-            alert("Vous venez de supprimer l'ID " + idDelete + " .");
-            console.log('supprimé l\'ID ' + idDelete);
-            // Ici, vous pouvez effectuer d'autres actions après la suppression réussie
+            Swal.fire(
+              "Supprimé!",
+              "Votre fichier a été supprimé.",
+              "success"
+            )
           })
-          .catch(error => console.error('Erreur lors de la suppression:', error));
-      } else {
-        console.log('Suppression annulée.');
-      }
+          .catch((error) => {
+            console.error('Erreur:', error);
+          });
+        } else {
+          suppressionAnnule();
+        }
+      })
     } else {
-      function showAlert() {
-        Swal.fire('Bonjour le monde!')
-    };
-    showAlert()
+      dontExist();
     }
   })
   .catch(error => console.error('Error:', error));
 });
-
-

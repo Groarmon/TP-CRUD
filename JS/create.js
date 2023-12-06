@@ -46,7 +46,7 @@ document.getElementById('form').addEventListener('submit',function(event) {
             body: JSON.stringify(users),
         })
         .then(response => response.json())
-        .then(data => confirm("Vous venez de créer l'ID " + data + " ."))
+        .then(data => confirmationCreation(data))
         .catch(error => console.error('Erreur :', error));
     }
 });
