@@ -21,18 +21,57 @@ document.getElementById('formUpdate').addEventListener('submit', function(event)
     };
 
 
-    if (!regExp.test(nomUpdate)){
-        zoneErreurNomUpdate.innerText = "Le nom ne doit pas comporter de numéros !";
-            event.preventDefault();
-        };
-        if (!regExp.test(prenomUpdate)){
-            zoneErreurPrenomUpdate.innerText = "Le prénom ne doit pas comporter de numéros !";
-            event.preventDefault();
-        };
+        fetch('http://fbrc.esy.es/DWWM22053/Api/api.php/users/')
+        .then(response => response.json())
+        .then(dataUsers => {
+          const longueurRecords = dataUsers.users.records.length;
+          // On recherche dans le tableau l'occurrence avec la donnée saisie
+          let emailExiste = false;
+          for (let i = 0; i < longueurRecords; i++) {
+              if (dataUsers.users.records[i][3] == emailUpdate) {
+                emailExiste = true;
+                break; 
+              }
+            }
+             if(emailExiste){
+      
+              swal.fire({
+                  title: "Le mail existe déjà.",
+                  icon: "info"
+              })
+      
+          } else {
 
-    //console.log(donneeUser.users.records[1][0] === idUpdate);
-    
-    fetch("http://fbrc.esy.es/DWWM22053/Api/api.php/users/" + idUpdate, {
+            if (!regExp.test(nomUpdate)){
+                zoneErreurNomUpdate.innerText = "Le nom ne doit pas comporter de numéros !";
+                    event.preventDefault();
+                };
+                if (!regExp.test(prenomUpdate)){
+                    zoneErreurPrenomUpdate.innerText = "Le prénom ne doit pas comporter de numéros !";
+                    event.preventDefault();
+                }
+                 else {
+          
+                    fetch("http://fbrc.esy.es/DWWM22053/Api/api.php/users/" + idUpdate, {
+        
+                    method: 'PUT',
+                    body: JSON.stringify(usersUpdate),
+                })
+            
+                .then(response => {
+                    return response.json();
+                })
+                
+                .then(usersUpdate => console.log(usersUpdate))
+                .catch(error => console.error(error));
+              }
+          }
+        })
+        .catch(error => console.error('Error:', error));
+      });
+      
+      if (dataUsers.users.records[idUpdate][3] == emailUpdate) {
+        fetch("http://fbrc.esy.es/DWWM22053/Api/api.php/users/" + idUpdate, {
         
         method: 'PUT',
         body: JSON.stringify(usersUpdate),
@@ -44,4 +83,8 @@ document.getElementById('formUpdate').addEventListener('submit', function(event)
     
     .then(usersUpdate => console.log(usersUpdate))
     .catch(error => console.error(error));
-});
+
+      }
+      
+    //console.log(donneeUser.users.records[1][0] === idUpdate);
+    
