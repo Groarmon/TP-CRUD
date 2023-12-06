@@ -1,6 +1,6 @@
 document.getElementById('form').addEventListener('submit',function(event) {
     
-    //event.preventDefault();
+    event.preventDefault();
     
     
     const id = document.getElementById('id').value;
